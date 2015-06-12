@@ -1,0 +1,17 @@
+
+
+
+body {
+    background-color: #009999;
+    font-family: "Times New Roman";
+}
+
+h1,h2,h3 {
+    color: orange;
+    text-align: center;
+}
+
+p {
+    
+    font-size: 20px;
+}
