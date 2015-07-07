@@ -1,0 +1,72 @@
+
+
+header{padding: 12px;
+margin: auto;}
+
+
+body {
+     
+    background-color: #f1f2f3;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal ;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+}
+   
+h2 {
+    font-family: 'Slabo 27px', serif;
+    font-size: 18px;
+    
+}
+
+h3{ 
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    padding: 12px; 
+    color: purple;}
+
+
+div {
+
+	width: 300px;
+	height: 250px;
+	border: 1px dashed #ef85a9 ;
+	display: inline-table;
+	margin: 12px;
+    padding: 12px;
+    text-align: left;
+    line-height: 1.5em;
+    
+  
+}
+
+ul{ text-align: left;
+    text-decoration-color: purple;
+    color: #629ca5;
+    text-align: center;
+    list-style-type: none;
+}
+
+hr{
+    align-content: flex-end;
+  width: 500px;
+}
+#mission {
+    background-color: #ffc3ba;
+
+}
+#vision {
+    background-color: #fdefda;
+}
+#values {
+    background-color: #d5ebc2;
+}
+
+a:hover {
+    background-color: #CCCCCC;
+}
+
+a:active {
+    background-color: #FF704D;
+}
