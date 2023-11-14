@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <script src="cdn.tailwindcss.com_3.3.5.js"></script>
+
+    <style>
+        @font-face {
+            font-family: "Roboto-Regular";
+            src: url('font/Roboto-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: "SF-Aarabic";
+            src: url('font/SF-Arabic-Rounded.ttf');
+        }
+
+        #fontSizeSlider {
+    position: absolute;
+    top: 3rem; /* Adjust as needed */
+    right: 1rem; /* Adjust as needed */
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    
+  /* Additional styles for active class */
+  .active {
+    transform: scale(1.1); /* Scale up the grid item */
+    z-index: 20; /* Make sure the scaled item is above others */
+  }
+
+
+    .scale-up {
+    transform: scale(1.1); /* Enlarge the grid item */
+    z-index: 10; /* Make sure the scaled item is above others */
+    transition: transform 0.3s; /* Smooth transition for scaling */
+  }
+
+
+    </style>
+</head>
+
+<body>
+ 
+                    <a href="#" id="fontSizeLink">FontSize</a>
+                    <a href="#">عربي</a> |
+
+
+
+
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="container mx-auto sm:px-6 lg:px-8">
+      <div class="flex items-center justify-center min-h-screen">
+    
+        <div class="relative flex items-center">
+          <!-- Left Navigation Arrow -->
+          <button class="p-2 bg-white rounded-full shadow-md focus:outline-none mr-8">
+            <span class="text-gray-800 text-xl">‹</span>
+          </button>
+    
+          <!-- Grid Container -->
+          <div class="grid grid-cols-2 gap-4 mx-auto">
+            <!-- Grid Item 1 -->
+            <a href="http://example.com/page1" class="w-32 h-32 p-4 rounded-lg bg-orange-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+              <div class="icon">
+                <!-- Your icon here -->
+                <span class="block text-2xl text-center">👤</span>
+              </div>
+              <div class="text">
+                <p class="text-center mt-2 text-sm">hello1</p>
+              </div>
+            </a>
+    
+            <!-- Grid Item 2 -->
+            <a href="http://example.com/page2" class="w-32 h-32 p-4 rounded-lg bg-orange-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+              <div class="icon">
+                <!-- Your icon here -->
+                <span class="block text-2xl text-center">👤</span>
+              </div>
+              <div class="text">
+                <p class="text-center mt-2 text-sm">hello2</p>
+              </div>
+            </a>
+          </div>
+    
+          <!-- Right Navigation Arrow -->
+          <button class="p-2 bg-white rounded-full shadow-md focus:outline-none ml-8">
+            <span class="text-gray-800 text-xl">›</span>
+          </button>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+
+
+
+
+
+
+    <script>
+        // JavaScript to toggle burger menu
+        const burgerMenuButton = document.getElementById('burgerMenuButton');
+        const burgerMenuItems = document.getElementById('burgerMenuItems');
+        
+        burgerMenuButton.addEventListener('click', () => {
+            burgerMenuItems.classList.toggle('hidden'); // Toggle visibility
+        });
+        </script>
+
+
+
+
+
+<script>
+    // Function to add 'active' class which will make the grid item larger
+    function toggleSize(event) {
+      const currentItem = event.currentTarget;
+      const items = document.querySelectorAll('.grid-item');
+  
+      // Remove active class from all items
+      items.forEach(item => item.classList.remove('active'));
+  
+      // Add active class to the clicked item
+      currentItem.classList.add('active');
+    }
+  </script>
+
+
+<script>
+  function scaleGridItem(itemId) {
+    // Remove scale-up class from all grid items
+    document.querySelectorAll('.grid-item').forEach(item => {
+      item.classList.remove('scale-up');
+    });
+
+    // Add scale-up class to the specific grid item
+    document.getElementById(itemId).classList.add('scale-up');
+  }
+
+</script>
+
+<script>
+document.getElementById('fontSizeLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    var fontSizeLink = this;
+    var fontSizeSlider = document.getElementById('fontSizeSlider');
+    var linkRect = fontSizeLink.getBoundingClientRect();
+
+    // Position the slider directly under the "FontSize" link
+    fontSizeSlider.style.position = 'absolute';
+    fontSizeSlider.style.left = linkRect.left + 'px';
+    fontSizeSlider.style.top = (linkRect.bottom + window.scrollY) + 'px';
+
+    fontSizeSlider.classList.toggle('hidden'); // Toggle visibility
+});
+
+document.getElementById('fontRange').addEventListener('input', function() {
+    document.documentElement.style.fontSize = this.value + 'px';
+});
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
