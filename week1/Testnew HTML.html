@@ -1,4 +1,53 @@
-  #slideshowImage {
+/* Base styles */
+#prevButton, #playPauseButton, #nextButton {
+    font-size: 1rem; /* Default size */
+}
+
+#scrollButton {
+    display: none; /* Hidden by default */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 600px) {
+    .absolute.bottom-5.right-5.flex.gap-2.z-10 {
+        bottom: 20px; /* Move up a bit */
+        right: 15px; /* Adjust right position if needed */
+        flex-direction: row; /* Keep buttons horizontal */
+        gap: 5px; /* Adjust gap between buttons */
+    }
+
+    #prevButton, #playPauseButton, #nextButton {
+        padding: 8px; /* Adjust padding for smaller buttons */
+        font-size: 0.8rem; /* Adjust font size if needed */
+    }
+
+    #scrollButton {
+        display: block; /* Show scroll button */
+    }
+}
+
+/* Tablet view adjustments */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .absolute.bottom-5.right-5.flex.gap-2.z-10 {
+        bottom: 25px; /* Adjust bottom position for tablet */
+        right: 20px; /* Adjust right position for tablet */
+    }
+
+    #prevButton, #playPauseButton, #nextButton {
+        padding: 10px; /* Adjust padding for tablet */
+        font-size: 0.9rem; /* Adjust font size for tablet */
+    }
+}
+
+/* Larger screens */
+@media (min-width: 1025px) {
+    /* Styles for larger screens if needed */
+}
+
+
+
+
+#slideshowImage {
     transition: opacity 0.5s ease-in-out;
     opacity: 0;
   }
