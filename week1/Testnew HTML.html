@@ -3,6 +3,7 @@
     opacity: 0;
   }
    
+  
     <!-- Image Slider -->
     <div class="image-slider relative w-full h-screen">
         <!-- Text Overlay -->
@@ -14,6 +15,7 @@
 
         <!-- Image Display -->
         <img id="slideshowImage" src="main/1.jpg" alt="Slideshow Image" class="w-full h-full object-cover object-center" />
+        
 
 
 
@@ -46,6 +48,17 @@
           Your responsive text here
       </div>
   </div> -->
+
+
+    
+    <!--<div class="full-bg-image flex items-center">
+      <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
+          Your responsive text here
+      </div>
+  </div> -->
+
+
+
 
    <!-- Allocate the ID Here-->
   <div id="middle-of-the-page" class="flex items-center justify-center min-h-screen bg-gray-100">
@@ -125,6 +138,58 @@
     // Initial display
     showImage(0, true);
   </script>
+
+    
+another approach 
+
+
+    
+    <script>
+    let imageIndex = 0;
+    let intervalId = null;
+    const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"];
+    const slideshowImage = document.getElementById('slideshowImage');
+  
+    function showImage(index) {
+      if (index < 0) index = imageNames.length - 1;
+      if (index >= imageNames.length) index = 0;
+      imageIndex = index;
+  
+      // Crossfade effect
+      slideshowImage.style.transition = 'opacity 0.5s ease-in-out'; // Crossfade transition
+      slideshowImage.style.opacity = 0;
+  
+      setTimeout(() => {
+        slideshowImage.src = imageNames[index];
+        slideshowImage.style.opacity = 1;
+      }, 500); // Half the transition time to start changing the image
+    }
+  
+    document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
+    document.getElementById('prevButton').addEventListener('click', () => showImage(imageIndex - 1));
+    document.getElementById('nextButton').addEventListener('click', () => showImage(imageIndex + 1));
+  
+    function togglePlayPause() {
+      var playIcon = document.getElementById('playIcon');
+      var pauseIcon = document.getElementById('pauseIcon');
+      playIcon.classList.toggle('hidden');
+      pauseIcon.classList.toggle('hidden');
+  
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      } else {
+        intervalId = setInterval(() => {
+          showImage(imageIndex + 1);
+        }, 2000); // Change this value to make image change faster
+      }
+    }
+  
+    // Initial display
+    showImage(0);
+  </script>
+  
+  
   
   
 
