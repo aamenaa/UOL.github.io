@@ -1,3 +1,8 @@
+  #slideshowImage {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+  }
+   
     <!-- Image Slider -->
     <div class="image-slider relative w-full h-screen">
         <!-- Text Overlay -->
@@ -10,12 +15,21 @@
         <!-- Image Display -->
         <img id="slideshowImage" src="main/1.jpg" alt="Slideshow Image" class="w-full h-full object-cover object-center" />
 
-        <!-- Navigation Buttons -->
-        <div class="absolute bottom-5 right-5 flex gap-2 z-10">
-            <button id="prevButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Previous</button>
-            <button id="playButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Play</button>
-            <button id="nextButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Next</button>
-        </div>
+
+
+<!-- Navigation Buttons -->
+<div class="absolute bottom-5 right-5 flex gap-2 z-10">
+    <button id="prevButton" class="bg-gray-800 hover:bg-gray-600 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+        <img src="icon/back.png" alt="Previous" class="h-6 w-6"> <!-- Adjust the path and file extension if needed -->
+    </button>
+    <button id="playPauseButton" class="bg-green-500 hover:bg-green-400 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+        <img src="icon/play.png" alt="Play" id="playIcon" class="h-6 w-6">
+        <img src="icon/pause.png" alt="Pause" id="pauseIcon" class="h-6 w-6 hidden"> <!-- This icon is hidden by default -->
+    </button>
+    <button id="nextButton" class="bg-gray-800 hover:bg-gray-600 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+        <img src="icon/next.png" alt="Next" class="h-6 w-6"> <!-- Adjust the path and file extension if needed -->
+    </button>
+</div>
     </div>
 
     <!-- Arrow Button, initially hidden, will show on mobile -->
@@ -37,7 +51,10 @@
   <div id="middle-of-the-page" class="flex items-center justify-center min-h-screen bg-gray-100">
 
 
-<!-- JavaScript for  -->
+
+</script>
+
+    <!-- JavaScript for Scrolling and Responsiveness -->
     <script>
       function scrollToMiddle() {
           document.getElementById('middle-of-the-page').scrollIntoView({ behavior: 'smooth' });
@@ -61,44 +78,53 @@
       }
   </script>
 
-      
+
+
+
 <script>
-  let imageIndex = 1;
-  let intervalId = null;
-  // Update the path to include the 'main' folder
-  const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"]; // Image filenames in the 'main' directory
-
-  const slideshowImage = document.getElementById('slideshowImage');
-  const playButton = document.getElementById('playButton');
-
-  function showImage(index) {
-      if (index < 0) index = imageNames.length - 1; // Wrap around to the last image
-      if (index >= imageNames.length) index = 0; // Wrap around to the first image
+    let imageIndex = 0;
+    let intervalId = null;
+    const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"];
+    const slideshowImage = document.getElementById('slideshowImage');
+  
+    function showImage(index, immediate = false) {
+      if (index < 0) index = imageNames.length - 1;
+      if (index >= imageNames.length) index = 0;
       imageIndex = index;
-      slideshowImage.src = imageNames[index];
-  }
-
-  document.getElementById('prevButton').addEventListener('click', () => {
-      showImage(imageIndex - 1);
-  });
-
-  document.getElementById('nextButton').addEventListener('click', () => {
-      showImage(imageIndex + 1);
-  });
-
-  playButton.addEventListener('click', () => {
+  
+      // Fade out effect
+      slideshowImage.style.opacity = 0;
+  
+      // Change image after fade out
+      setTimeout(() => {
+        slideshowImage.src = imageNames[index];
+        slideshowImage.style.opacity = 1; // Fade in new image
+      }, immediate ? 0 : 500); // Adjust time for fade effect
+    }
+  
+    document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
+    document.getElementById('prevButton').addEventListener('click', () => showImage(imageIndex - 1));
+    document.getElementById('nextButton').addEventListener('click', () => showImage(imageIndex + 1));
+  
+    function togglePlayPause() {
+      var playIcon = document.getElementById('playIcon');
+      var pauseIcon = document.getElementById('pauseIcon');
+      playIcon.classList.toggle('hidden');
+      pauseIcon.classList.toggle('hidden');
+  
       if (intervalId) {
-          clearInterval(intervalId);
-          intervalId = null;
-          playButton.textContent = 'Play';
+        clearInterval(intervalId);
+        intervalId = null;
       } else {
-          intervalId = setInterval(() => {
-              showImage(imageIndex + 1);
-          }, 5000); // Change image every 5 seconds
-          playButton.textContent = 'Pause';
+        intervalId = setInterval(() => {
+          showImage(imageIndex + 1);
+        }, 3000); // Change this value to make image change faster
       }
-  });
+    }
+  
+    // Initial display
+    showImage(0, true);
+  </script>
+  
+  
 
-  // Initial display
-  showImage(0);
-</script>
