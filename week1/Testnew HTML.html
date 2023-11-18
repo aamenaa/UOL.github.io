@@ -1,16 +1,39 @@
-    <div class="full-bg-image flex items-center">
+    <!-- Image Slider -->
+    <div class="image-slider relative w-full h-screen">
+        <!-- Text Overlay -->
+        <div class="absolute inset-0 flex items-center justify-start">
+            <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
+                Your responsive text here
+            </div>
+        </div>
+
+        <!-- Image Display -->
+        <img id="slideshowImage" src="main/1.jpg" alt="Slideshow Image" class="w-full h-full object-cover object-center" />
+
+        <!-- Navigation Buttons -->
+        <div class="absolute bottom-5 right-5 flex gap-2 z-10">
+            <button id="prevButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Previous</button>
+            <button id="playButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Play</button>
+            <button id="nextButton" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Next</button>
+        </div>
+    </div>
+
+    <!-- Arrow Button, initially hidden, will show on mobile -->
+
+
+    <button id="scrollButton" class="hidden sm:hidden md:hidden fixed bottom-0 left-1/2 transform -translate-x-1/2 text-white font-bold py-2 px-4 rounded-full" style="background-color: rgba(165, 42, 42, 0.5);"> <!-- Adjust the RGBA values to your preferred shade of brown -->
+        ↓
+    </button>
+    
+
+    
+    <!--<div class="full-bg-image flex items-center">
       <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
           Your responsive text here
       </div>
-  </div>
+  </div> -->
 
-   <!-- Arrow Button, initially hidden -->
-   <button id="scrollButton" class="hidden fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-    ↓
-</button>
-
-
-   <!-- AAllocate the ID Here-->
+   <!-- Allocate the ID Here-->
   <div id="middle-of-the-page" class="flex items-center justify-center min-h-screen bg-gray-100">
 
 
@@ -37,3 +60,45 @@
           document.getElementById('scrollButton').classList.remove('hidden');
       }
   </script>
+
+      
+<script>
+  let imageIndex = 1;
+  let intervalId = null;
+  // Update the path to include the 'main' folder
+  const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"]; // Image filenames in the 'main' directory
+
+  const slideshowImage = document.getElementById('slideshowImage');
+  const playButton = document.getElementById('playButton');
+
+  function showImage(index) {
+      if (index < 0) index = imageNames.length - 1; // Wrap around to the last image
+      if (index >= imageNames.length) index = 0; // Wrap around to the first image
+      imageIndex = index;
+      slideshowImage.src = imageNames[index];
+  }
+
+  document.getElementById('prevButton').addEventListener('click', () => {
+      showImage(imageIndex - 1);
+  });
+
+  document.getElementById('nextButton').addEventListener('click', () => {
+      showImage(imageIndex + 1);
+  });
+
+  playButton.addEventListener('click', () => {
+      if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+          playButton.textContent = 'Play';
+      } else {
+          intervalId = setInterval(() => {
+              showImage(imageIndex + 1);
+          }, 5000); // Change image every 5 seconds
+          playButton.textContent = 'Pause';
+      }
+  });
+
+  // Initial display
+  showImage(0);
+</script>
