@@ -185,3 +185,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 </script>
 
+Another script 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchIcon = document.getElementById('search-icon');
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.querySelector('#search-form input[type="text"]');
+        const keywords = ["Study", "Example", "Keyword3"];
+        let suggestionBox = null;
+    
+        const debounce = (func, delay) => {
+            let inDebounce;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(inDebounce);
+                inDebounce = setTimeout(() => func.apply(context, args), delay);
+            };
+        };
+    
+        const showSuggestions = (text) => {
+            const filteredKeywords = text ? 
+                keywords.filter(keyword => keyword.toLowerCase().includes(text.toLowerCase())) : 
+                [];
+            
+            if (suggestionBox) suggestionBox.remove();
+    
+            if (filteredKeywords.length) {
+                suggestionBox = document.createElement('div');
+                suggestionBox.className = 'suggestion-box';
+    
+                filteredKeywords.forEach(suggestion => {
+                    const div = document.createElement('div');
+                    div.textContent = suggestion;
+                    div.className = 'suggestion-item';
+                    div.addEventListener('click', () => {
+                        searchInput.value = suggestion;
+                        highlightSearchWords(suggestion);
+                        searchForm.classList.add('hidden');
+                    });
+                    suggestionBox.appendChild(div);
+                });
+    
+                searchForm.appendChild(suggestionBox);
+            }
+        };
+    
+        const highlightSearchWords = (word) => {
+            // Use DOM manipulation for highlighting to avoid disrupting the page's structure
+            const regex = new RegExp(`(${word})`, 'gi');
+            document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li').forEach(el => {
+                el.innerHTML = el.textContent.replace(regex, (match) => `<mark class="highlighted">${match}</mark>`);
+            });
+            scrollToFirstHighlight();
+        };
+    
+        const scrollToFirstHighlight = () => {
+            const firstHighlight = document.querySelector('.highlighted');
+            if (firstHighlight) {
+                firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        };
+    
+        const removeHighlights = () => {
+            document.querySelectorAll('mark.highlighted').forEach(mark => {
+                const parent = mark.parentNode;
+                while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+                parent.removeChild(mark);
+            });
+        };
+    
+        searchIcon.addEventListener('click', (event) => {
+            event.preventDefault();
+            searchForm.classList.toggle('hidden');
+            removeHighlights();
+        });
+    
+        searchInput.addEventListener('input', debounce(() => {
+            showSuggestions(searchInput.value);
+        }, 300));
+    
+        // Hide suggestion box when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!searchForm.contains(event.target) && event.target !== searchIcon) {
+                if (suggestionBox) suggestionBox.remove();
+            }
+        });
+    });
+    </script>
+
