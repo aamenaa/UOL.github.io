@@ -1,3 +1,13 @@
+<!-- Hidden Search Form -->
+                    <div id="search-form" class="hidden absolute right-0 mt-2 w-72">
+                        <form action="/search">
+                            <input type="text" name="q" placeholder="Search..." class="custom-font p-2 border rounded">
+                            <button type="submit">
+                                <img src="search.png" alt="Search">
+                            </button>
+                        </form>
+                    </div>
+
 
 mark {
     background-color: yellow;
