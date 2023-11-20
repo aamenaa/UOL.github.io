@@ -1,244 +1,187 @@
-/* Base styles */
-#prevButton, #playPauseButton, #nextButton {
-    font-size: 1rem; /* Default size */
+
+
+/* CSS */
+.hidden {
+    display: none;
 }
 
-#scrollButton {
-    display: none; /* Hidden by default */
+#search-form {
+    position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: rgb(161, 61, 61);
+  padding: 10px;
+  border: 1px solid #943636;
+  border-radius: 4px;
 }
 
-/* Mobile view adjustments */
-@media (max-width: 600px) {
-    .absolute.bottom-5.right-5.flex.gap-2.z-10 {
-        bottom: 20px; /* Move up a bit */
-        right: 15px; /* Adjust right position if needed */
-        flex-direction: row; /* Keep buttons horizontal */
-        gap: 5px; /* Adjust gap between buttons */
-    }
-
-    #prevButton, #playPauseButton, #nextButton {
-        padding: 8px; /* Adjust padding for smaller buttons */
-        font-size: 0.8rem; /* Adjust font size if needed */
-    }
-
-    #scrollButton {
-        display: block; /* Show scroll button */
-    }
+#search-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: inline-block; /* Remove display: flex */
+    position: relative; /* Add position: relative */
 }
 
-/* Tablet view adjustments */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .absolute.bottom-5.right-5.flex.gap-2.z-10 {
-        bottom: 25px; /* Adjust bottom position for tablet */
-        right: 20px; /* Adjust right position for tablet */
-    }
-
-    #prevButton, #playPauseButton, #nextButton {
-        padding: 10px; /* Adjust padding for tablet */
-        font-size: 0.9rem; /* Adjust font size for tablet */
-    }
-}
-
-/* Larger screens */
-@media (min-width: 1025px) {
-    /* Styles for larger screens if needed */
+#search-form button img {
+    width: 20px; /* Adjust as needed */
+    height: auto;
+    position: absolute; /* Add position: absolute */
+    top: 50%; /* Position the icon vertically in the button's center */
+    transform: translateY(-50%); /* Adjust translateY value to fine-tune the vertical alignment */
+    left: 5px; /* Move the icon slightly to the right */
 }
 
 
+/* Modernize Search Input */
+#search-form input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
+    font-size: 16px; /* Larger font size */
+}
+
+.search-form-layout {
+  display: flex;
+  align-items: center;
+}
+
+.search-form-layout input,
+.search-form-layout button {
+  height: 40px;
+}
+
+.search-form-layout input {
+  flex-grow: 1;
+  border: none;
+  padding: 8px;
+}
 
 
-#slideshowImage {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-  }
-   
-  
-    <!-- Image Slider -->
-    <div class="image-slider relative w-full h-screen">
-        <!-- Text Overlay -->
-        <div class="absolute inset-0 flex items-center justify-start">
-            <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
-                Your responsive text here
-            </div>
-        </div>
+/* Styles for the suggestion box */
+.suggestion-box {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+}
 
-        <!-- Image Display -->
-        <img id="slideshowImage" src="main/1.jpg" alt="Slideshow Image" class="w-full h-full object-cover object-center" />
-        
+/* Styles for each suggestion item */
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
 
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
 
+/* Scrollbar Styling (optional, adjust colors as needed) */
+.suggestion-box::-webkit-scrollbar {
+    width: 5px;
+}
 
-<!-- Navigation Buttons -->
-<div class="absolute bottom-5 right-5 flex gap-2 z-10">
-    <button id="prevButton" class="bg-gray-800 hover:bg-gray-600 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
-        <img src="icon/back.png" alt="Previous" class="h-6 w-6"> <!-- Adjust the path and file extension if needed -->
-    </button>
-    <button id="playPauseButton" class="bg-green-500 hover:bg-green-400 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-        <img src="icon/play.png" alt="Play" id="playIcon" class="h-6 w-6">
-        <img src="icon/pause.png" alt="Pause" id="pauseIcon" class="h-6 w-6 hidden"> <!-- This icon is hidden by default -->
-    </button>
-    <button id="nextButton" class="bg-gray-800 hover:bg-gray-600 transition-colors duration-300 font-bold p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
-        <img src="icon/next.png" alt="Next" class="h-6 w-6"> <!-- Adjust the path and file extension if needed -->
-    </button>
-</div>
-    </div>
+.suggestion-box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
 
-    <!-- Arrow Button, initially hidden, will show on mobile -->
+.suggestion-box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
-
-    <button id="scrollButton" class="hidden sm:hidden md:hidden fixed bottom-0 left-1/2 transform -translate-x-1/2 text-white font-bold py-2 px-4 rounded-full" style="background-color: rgba(165, 42, 42, 0.5);"> <!-- Adjust the RGBA values to your preferred shade of brown -->
-        ↓
-    </button>
-    
-
-    
-    <!--<div class="full-bg-image flex items-center">
-      <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
-          Your responsive text here
-      </div>
-  </div> -->
-
-
-    
-    <!--<div class="full-bg-image flex items-center">
-      <div class="text-white text-lg md:text-xl lg:text-2xl pl-4 md:pl-8">
-          Your responsive text here
-      </div>
-  </div> -->
-
-
-
-
-   <!-- Allocate the ID Here-->
-  <div id="middle-of-the-page" class="flex items-center justify-center min-h-screen bg-gray-100">
-
-
-
-</script>
-
-    <!-- JavaScript for Scrolling and Responsiveness -->
-    <script>
-      function scrollToMiddle() {
-          document.getElementById('middle-of-the-page').scrollIntoView({ behavior: 'smooth' });
-      }
-
-      document.getElementById('scrollButton').addEventListener('click', scrollToMiddle);
-
-      // Show the button only on small screens
-      window.addEventListener('resize', function() {
-          const scrollButton = document.getElementById('scrollButton');
-          if (window.innerWidth < 640) {
-              scrollButton.classList.remove('hidden');
-          } else {
-              scrollButton.classList.add('hidden');
-          }
-      });
-
-      // Initial check
-      if (window.innerWidth < 640) {
-          document.getElementById('scrollButton').classList.remove('hidden');
-      }
-  </script>
-
-
-
+/* Styles for highlighted text */
+mark {
+    background-color: yellow;
+    color: black;
+}
 
 <script>
-    let imageIndex = 0;
-    let intervalId = null;
-    const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"];
-    const slideshowImage = document.getElementById('slideshowImage');
-  
-    function showImage(index, immediate = false) {
-      if (index < 0) index = imageNames.length - 1;
-      if (index >= imageNames.length) index = 0;
-      imageIndex = index;
-  
-      // Fade out effect
-      slideshowImage.style.opacity = 0;
-  
-      // Change image after fade out
-      setTimeout(() => {
-        slideshowImage.src = imageNames[index];
-        slideshowImage.style.opacity = 1; // Fade in new image
-      }, immediate ? 0 : 500); // Adjust time for fade effect
-    }
-  
-    document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
-    document.getElementById('prevButton').addEventListener('click', () => showImage(imageIndex - 1));
-    document.getElementById('nextButton').addEventListener('click', () => showImage(imageIndex + 1));
-  
-    function togglePlayPause() {
-      var playIcon = document.getElementById('playIcon');
-      var pauseIcon = document.getElementById('pauseIcon');
-      playIcon.classList.toggle('hidden');
-      pauseIcon.classList.toggle('hidden');
-  
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      } else {
-        intervalId = setInterval(() => {
-          showImage(imageIndex + 1);
-        }, 3000); // Change this value to make image change faster
-      }
-    }
-  
-    // Initial display
-    showImage(0, true);
-  </script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchIcon = document.getElementById('search-icon');
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.querySelector('#search-form input[type="text"]');
+
+
+    const keywords = ["Study", "Example", "Keyword3"]; // Modify as needed
+
+    searchIcon.addEventListener('click', (event) => {
+        event.preventDefault();
+        searchForm.classList.toggle('hidden');
+        if (!searchForm.classList.contains('hidden')) {
+            removeHighlights();
+        } else {
+            const query = searchInput.value.trim();
+            if (query) {
+                highlightSearchWords(query);
+            }
+        }
+    });
 
     
-another approach 
-
-
+        searchInput.addEventListener('input', () => {
+            const inputText = searchInput.value;
+            showSuggestions(inputText);
+        });
     
-    <script>
-    let imageIndex = 0;
-    let intervalId = null;
-    const imageNames = ["main/1.jpg", "main/2.jpg", "main/3.jpg"];
-    const slideshowImage = document.getElementById('slideshowImage');
-  
-    function showImage(index) {
-      if (index < 0) index = imageNames.length - 1;
-      if (index >= imageNames.length) index = 0;
-      imageIndex = index;
-  
-      // Crossfade effect
-      slideshowImage.style.transition = 'opacity 0.5s ease-in-out'; // Crossfade transition
-      slideshowImage.style.opacity = 0;
-  
-      setTimeout(() => {
-        slideshowImage.src = imageNames[index];
-        slideshowImage.style.opacity = 1;
-      }, 500); // Half the transition time to start changing the image
+        function showSuggestions(text) {
+            const suggestions = keywords.filter(keyword => 
+                keyword.toLowerCase().startsWith(text.toLowerCase())
+            );
+    
+            removeExistingSuggestions();
+    
+            if (suggestions.length) {
+                const suggestionBox = document.createElement('div');
+                suggestionBox.className = 'suggestion-box';
+    
+                suggestions.forEach(suggestion => {
+                    const div = document.createElement('div');
+                    div.textContent = suggestion;
+                    div.className = 'suggestion-item';
+                    div.addEventListener('click', () => {
+                        searchInput.value = suggestion;
+                        removeExistingSuggestions();
+                        highlightSearchWords(suggestion);
+                    });
+                    suggestionBox.appendChild(div);
+                });
+    
+                searchForm.appendChild(suggestionBox);
+            }
+        }
+    
+        function removeExistingSuggestions() {
+            const existingSuggestions = document.querySelector('.suggestion-box');
+            existingSuggestions?.remove();
+        }
+    
+
+        function highlightSearchWords(word) {
+        removeHighlights();
+        const regex = new RegExp(`(${word})`, 'gi');
+        document.body.innerHTML = document.body.innerHTML.replace(regex, (match) => `<mark class="highlighted">${match}</mark>`);
+        scrollToFirstHighlight();
     }
-  
-    document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
-    document.getElementById('prevButton').addEventListener('click', () => showImage(imageIndex - 1));
-    document.getElementById('nextButton').addEventListener('click', () => showImage(imageIndex + 1));
-  
-    function togglePlayPause() {
-      var playIcon = document.getElementById('playIcon');
-      var pauseIcon = document.getElementById('pauseIcon');
-      playIcon.classList.toggle('hidden');
-      pauseIcon.classList.toggle('hidden');
-  
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      } else {
-        intervalId = setInterval(() => {
-          showImage(imageIndex + 1);
-        }, 2000); // Change this value to make image change faster
-      }
+
+    function scrollToFirstHighlight() {
+        const firstHighlight = document.querySelector('.highlighted');
+        if (firstHighlight) {
+            firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
-  
-    // Initial display
-    showImage(0);
-  </script>
-  
-  
-  
-  
+
+    function removeHighlights() {
+        const markedWords = document.querySelectorAll('mark.highlighted');
+        markedWords.forEach(mark => {
+            mark.outerHTML = mark.innerHTML; // Replace <mark> tag with its contents
+        });
+    }
+    });
+</script>
 
