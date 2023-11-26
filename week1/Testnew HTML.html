@@ -1,277 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiyal School Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="flex flex-col w-full h-screen">
+        <div class="flex flex-col h-2/3 bg-cover bg-no-repeat bg-center justify-center items-center" style="background-image: url('main/1.jpg');">
+            <div class="text-center text-white">
+            <h1 class="text-4xl mb-4">What is the Aiyal School</h1>
+            <p>Insert here text to describe the school environment and the location.</p>
+            <div class="relative flex items-center justify-center w-full">
+          
+                <!-- Grid Container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
+                    <!-- Grid Item 1 -->
+                  <a href="http://example.com/page1" class="w-32 h-32 p-4 rounded-lg bg-red-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+                    <div class="icon">
+                      <!-- Your icon here -->
+                      <span class="block text-2xl text-center">👤</span>
+                    </div>
+                    <div class="text">
+                      <p class="text-center mt-2 text-sm">hello1</p>
+                    </div>
+                  </a>
+          
+                  <!-- Grid Item 2 -->
+                  <a href="http://example.com/page2" class="w-32 h-32 p-4 rounded-lg bg-red-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+                    <div class="icon">
+                      <!-- Your icon here -->
+                      <span class="block text-2xl text-center">👤</span>
+                    </div>
+                    <div class="text">
+                      <p class="text-center mt-2 text-sm">hello2</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+        </div>
+        <div class="absolute top-4 right-4 bg-blue-200 p-2 rounded">logo</div>
+    </div>
 
 
-/* CSS */
-.hidden {
-    display: none;
-}
-
-#search-form {
-    position: absolute;
-  right: 0;
-  top: 100%;
-  background-color: rgb(161, 61, 61);
-  padding: 10px;
-  border: 1px solid #943636;
-  border-radius: 4px;
-}
-
-#search-form button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    display: inline-block; /* Remove display: flex */
-    position: relative; /* Add position: relative */
-}
-
-#search-form button img {
-    width: 20px; /* Adjust as needed */
-    height: auto;
-    position: absolute; /* Add position: absolute */
-    top: 50%; /* Position the icon vertically in the button's center */
-    transform: translateY(-50%); /* Adjust translateY value to fine-tune the vertical alignment */
-    left: 5px; /* Move the icon slightly to the right */
-}
+    <!-- Terms Box -->
+    <div class="flex flex-col md:flex-row h-1/3">
+    <div class="w-full md:w-1/2 p-4 bg-blue-600 order-1">
+        <h2 class="text-xl font-bold ">Grades Terms</h2>
+        <div class="bg-blue-300 p-2 mb-2 rounded">Grades 1</div>
+        <div class="bg-blue-300 p-2 mb-2 rounded">Grades 2</div>
+        <div class="bg-blue-300 p-2 rounded">Grades 2</div>
+    </div>
 
 
-/* Modernize Search Input */
-#search-form input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Include padding in width */
-    font-size: 16px; /* Larger font size */
-}
+    <!-- Acceptance Box -->
+        <div class="flex flex-col w-full md:w-1/2 p-4 order-2 md:order-none">
+            <h2 class="text-2xl font-bold mb-4">Acceptance rules</h2>
+    <div class="flex justify-between items-start">
+        <div class="flex-1 space-y-4">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-700 flex-grow">
+                    Text text text here Text text text here Text text text here
+                </p>
+                <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                    icon
+                </div>
+            </div>
+            <button class="bg-red-500 text-black py-2 px-4 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50">
+                Apply Now
+            </button>
+        </div>
+        <div class="flex-1 space-y-4">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-700 flex-grow">
+                    Text text text here Text text text here Text text text here
+                </p>
+                <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                    icon
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-700 flex-grow">
+                    Text text text here Text text text here Text text text here
+                </p>
+                <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                    icon
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-.search-form-layout {
-  display: flex;
-  align-items: center;
-}
+</div>
 
-.search-form-layout input,
-.search-form-layout button {
-  height: 40px;
-}
-
-.search-form-layout input {
-  flex-grow: 1;
-  border: none;
-  padding: 8px;
-}
-
-
-/* Styles for the suggestion box */
-.suggestion-box {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 8px;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
-/* Styles for each suggestion item */
-.suggestion-item {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.suggestion-item:hover {
-    background-color: #f0f0f0;
-}
-
-/* Scrollbar Styling (optional, adjust colors as needed) */
-.suggestion-box::-webkit-scrollbar {
-    width: 5px;
-}
-
-.suggestion-box::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 2px;
-}
-
-.suggestion-box::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Styles for highlighted text */
-mark {
-    background-color: yellow;
-    color: black;
-}
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const searchIcon = document.getElementById('search-icon');
-    const searchForm = document.getElementById('search-form');
-    const searchInput = document.querySelector('#search-form input[type="text"]');
-
-
-    const keywords = ["Study", "Example", "Keyword3"]; // Modify as needed
-
-    searchIcon.addEventListener('click', (event) => {
-        event.preventDefault();
-        searchForm.classList.toggle('hidden');
-        if (!searchForm.classList.contains('hidden')) {
-            removeHighlights();
-        } else {
-            const query = searchInput.value.trim();
-            if (query) {
-                highlightSearchWords(query);
-            }
-        }
-    });
-
-    
-        searchInput.addEventListener('input', () => {
-            const inputText = searchInput.value;
-            showSuggestions(inputText);
-        });
-    
-        function showSuggestions(text) {
-            const suggestions = keywords.filter(keyword => 
-                keyword.toLowerCase().startsWith(text.toLowerCase())
-            );
-    
-            removeExistingSuggestions();
-    
-            if (suggestions.length) {
-                const suggestionBox = document.createElement('div');
-                suggestionBox.className = 'suggestion-box';
-    
-                suggestions.forEach(suggestion => {
-                    const div = document.createElement('div');
-                    div.textContent = suggestion;
-                    div.className = 'suggestion-item';
-                    div.addEventListener('click', () => {
-                        searchInput.value = suggestion;
-                        removeExistingSuggestions();
-                        highlightSearchWords(suggestion);
-                    });
-                    suggestionBox.appendChild(div);
-                });
-    
-                searchForm.appendChild(suggestionBox);
-            }
-        }
-    
-        function removeExistingSuggestions() {
-            const existingSuggestions = document.querySelector('.suggestion-box');
-            existingSuggestions?.remove();
-        }
-    
-
-        function highlightSearchWords(word) {
-        removeHighlights();
-        const regex = new RegExp(`(${word})`, 'gi');
-        document.body.innerHTML = document.body.innerHTML.replace(regex, (match) => `<mark class="highlighted">${match}</mark>`);
-        scrollToFirstHighlight();
-    }
-
-    function scrollToFirstHighlight() {
-        const firstHighlight = document.querySelector('.highlighted');
-        if (firstHighlight) {
-            firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-
-    function removeHighlights() {
-        const markedWords = document.querySelectorAll('mark.highlighted');
-        markedWords.forEach(mark => {
-            mark.outerHTML = mark.innerHTML; // Replace <mark> tag with its contents
-        });
-    }
-    });
-</script>
-
-Another script 
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const searchIcon = document.getElementById('search-icon');
-        const searchForm = document.getElementById('search-form');
-        const searchInput = document.querySelector('#search-form input[type="text"]');
-        const keywords = ["Study", "Example", "Keyword3"];
-        let suggestionBox = null;
-    
-        const debounce = (func, delay) => {
-            let inDebounce;
-            return function() {
-                const context = this;
-                const args = arguments;
-                clearTimeout(inDebounce);
-                inDebounce = setTimeout(() => func.apply(context, args), delay);
-            };
-        };
-    
-        const showSuggestions = (text) => {
-            const filteredKeywords = text ? 
-                keywords.filter(keyword => keyword.toLowerCase().includes(text.toLowerCase())) : 
-                [];
-            
-            if (suggestionBox) suggestionBox.remove();
-    
-            if (filteredKeywords.length) {
-                suggestionBox = document.createElement('div');
-                suggestionBox.className = 'suggestion-box';
-    
-                filteredKeywords.forEach(suggestion => {
-                    const div = document.createElement('div');
-                    div.textContent = suggestion;
-                    div.className = 'suggestion-item';
-                    div.addEventListener('click', () => {
-                        searchInput.value = suggestion;
-                        highlightSearchWords(suggestion);
-                        searchForm.classList.add('hidden');
-                    });
-                    suggestionBox.appendChild(div);
-                });
-    
-                searchForm.appendChild(suggestionBox);
-            }
-        };
-    
-        const highlightSearchWords = (word) => {
-            // Use DOM manipulation for highlighting to avoid disrupting the page's structure
-            const regex = new RegExp(`(${word})`, 'gi');
-            document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li').forEach(el => {
-                el.innerHTML = el.textContent.replace(regex, (match) => `<mark class="highlighted">${match}</mark>`);
-            });
-            scrollToFirstHighlight();
-        };
-    
-        const scrollToFirstHighlight = () => {
-            const firstHighlight = document.querySelector('.highlighted');
-            if (firstHighlight) {
-                firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        };
-    
-        const removeHighlights = () => {
-            document.querySelectorAll('mark.highlighted').forEach(mark => {
-                const parent = mark.parentNode;
-                while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-                parent.removeChild(mark);
-            });
-        };
-    
-        searchIcon.addEventListener('click', (event) => {
-            event.preventDefault();
-            searchForm.classList.toggle('hidden');
-            removeHighlights();
-        });
-    
-        searchInput.addEventListener('input', debounce(() => {
-            showSuggestions(searchInput.value);
-        }, 300));
-    
-        // Hide suggestion box when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!searchForm.contains(event.target) && event.target !== searchIcon) {
-                if (suggestionBox) suggestionBox.remove();
-            }
-        });
-    });
-    </script>
-
+</body>
+</html>
