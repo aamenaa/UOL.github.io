@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiyal School</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles can be placed here */
+    </style>
+</head>
+<body>
+
+<div class="relative w-full min-h-screen">
+    <!-- Full-screen background image -->
+    <div class="absolute inset-0 bg-cover bg-no-repeat bg-center" style="background-image: url('main/1.jpg');"></div>
+  
+    <!-- Top right logo -->
+    <div class="absolute top-4 right-4 z-40">
+      <div class="bg-blue-200 p-2 rounded">logo</div>
+    </div>
+  
+    <!-- All content container -->
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-between">
+      <!-- Centered Content above the background -->
+      <div class="text-center text-white">
+        <h1 class="text-4xl mb-4">What is the Aiyal School</h1>
+        <p>Insert here text to describe the school environment and the location.</p>
+        <div class="relative flex items-center justify-center w-full">
+      
+            <!-- Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
+                <!-- Grid Item 1 -->
+              <a href="http://example.com/page1" class="w-32 h-32 p-4 rounded-lg bg-red-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+                <div class="icon">
+                  <!-- Your icon here -->
+                  <span class="block text-2xl text-center">👤</span>
+                </div>
+                <div class="text">
+                  <p class="text-center mt-2 text-sm">hello1</p>
+                </div>
+              </a>
+      
+              <!-- Grid Item 2 -->
+              <a href="http://example.com/page2" class="w-32 h-32 p-4 rounded-lg bg-red-400 shadow-md transition duration-300 ease-in-out transform hover:scale-110">
+                <div class="icon">
+                  <!-- Your icon here -->
+                  <span class="block text-2xl text-center">👤</span>
+                </div>
+                <div class="text">
+                  <p class="text-center mt-2 text-sm">hello2</p>
+                </div>
+              </a>
+            </div>
+          </div>
+    </div>
+  
+      <!-- Bottom Section with Acceptance and Terms Boxes -->
+      <div class="w-full flex flex-col-reverse md:flex-row md:justify-between pb-16 md:pb-0">
+        <!-- Terms Box -->
+        <div class="bg-blue-600 text-white p-4 w-full md:w-1/2  order-1">
+          <h2 class="text-xl font-bold">Grades Terms</h2>
+          <div class="bg-blue-300 p-2 mb-2 rounded">Grades 1</div>
+          <div class="bg-blue-300 p-2 mb-2 rounded">Grades 2</div>
+          <div class="bg-blue-300 p-2 rounded">Grades 2</div>
+        </div>
+  
+        <!-- Acceptance Box -->
+        <div class="bg-white text-gray-700 p-4 w-full md:w-1/2 mt-4 md:mt-0 order-2 md:order-none">
+          <h2 class="text-2xl font-bold mb-4">Acceptance rules</h2>
+          <div class="flex justify-between items-start">
+            <div class="flex-1 space-y-4">
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-700 flex-grow">
+                        Text text text here Text text text here Text text text here
+                    </p>
+                    <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                        icon
+                    </div>
+                </div>
+                <button class="bg-red-500 text-white py-2 px-4 rounded hover:bg-orange-600 focus:outline-none focus:ring focus:ring-orange-500 focus:ring-opacity-50 mt-4">
+                    Apply Now
+                </button>
+            </div>
+            <div class="flex-1 space-y-4">
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-700 flex-grow">
+                        Text text text here Text text text here Text text text here
+                    </p>
+                    <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                        icon
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-700 flex-grow">
+                        Text text text here Text text text here Text text text here
+                    </p>
+                    <div class="flex-shrink-0 ml-4 rounded-full bg-blue-500 text-white flex items-center justify-center w-12 h-12">
+                        icon
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
