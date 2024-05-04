@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <script src="cdn.tailwindcss.com_3.3.5.js"></script>
+
+<style>
+
+/* Menu Items Style */
+#burgerMenuItems {
+    z-index: 10; /* Ensure it's above other content */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for opening/closing menu */
+}
+
+
+#mainContainer {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-size: cover; /* Cover the entire container */
+        }
+        .semi-transparent-btn {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+            color: white;
+            /*border: 2px solid white;  White border */
+        }
+        .text-only-btn {
+            background: none;
+            color: white;
+            border: none;
+
+        }
+</style>
+
+</head>
+<body >
+
+
+<!-- New Div -->
+<div id="mainContainer" class="rounded-lg shadow-lg text-white relative flex flex-col justify-center items-center md:hidden lg:hidden xl:hidden">
+  <!-- Button overlay -->
+  <div class="absolute top-0 mt-8 flex justify-center items-center w-full space-x-4">
+      <button id="btn1" class="font-bold py-2 px-4 rounded-full m-1 text-only-btn" onclick="changeImage('1.jpg', 'btn1')">text1</button>
+      <button id="btn2" class="font-bold py-2 px-4 rounded-full m-1 text-only-btn" onclick="changeImage('2.jpg', 'btn2')">text2</button>
+      <button id="btn3" class="font-bold py-2 px-4 rounded-full m-1 text-only-btn" onclick="changeImage('3.jpg', 'btn3')">text3</button>
+  </div>
+  <!-- Image display -->
+  <div id="imageContainer" class="flex justify-center items-center w-full">
+      <img id="mainImage" src="1.jpg" alt="Display Image" class="w-full h-auto rounded">
+  </div>
+</div>
+
+
+
+
+<script>
+  // JavaScript New Footer Slider - Mobile Screen
+        function changeImage(src, btnId) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = src;
+            document.getElementById('mainContainer').style.backgroundImage = `url('${src}')`;
+
+            // Reset all buttons to text-only style
+            document.getElementById('btn1').className = 'font-bold py-2 px-4 rounded-full m-1 text-only-btn';
+            document.getElementById('btn2').className = 'font-bold py-2 px-4 rounded-full m-1 text-only-btn';
+            document.getElementById('btn3').className = 'font-bold py-2 px-4 rounded-full m-1 text-only-btn';
+
+            // Apply the semi-transparent style to the active button
+            document.getElementById(btnId).className = 'font-bold py-2 px-4 rounded-full m-1 semi-transparent-btn';
+        }
+
+        // Initialize the first button with semi-transparent style
+        changeImage('1.jpg', 'btn1');
+    </script>
+
+</body>
+
+</html>
